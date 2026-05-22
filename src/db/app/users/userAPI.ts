@@ -2,7 +2,7 @@ import { users } from "../../schema"
 import { Request, Response } from 'express';
 import db from "../.."
 import { eq } from "drizzle-orm";
-import { datetime } from "drizzle-orm/mysql-core";
+
 
 export const getAlluser = async (req: Request, res: Response) => {
     try {

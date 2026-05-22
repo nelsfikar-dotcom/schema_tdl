@@ -18,13 +18,14 @@ export const tasks = mysqlTable('tasks', {
     desk: varchar({ length: 255 }).notNull(),
     deadline: date().notNull(),
     status: mysqlEnum('status', ['completed', 'process', 'cancel']).default('process'),
+    level: mysqlEnum('level', ['priority', 'optional', 'normal']).default('normal'),    
     user_id: int().notNull(),
     created_at: datetime().default(sql`CURRENT_TIMESTAMP`).notNull(),
     updated_at: datetime().default(sql`CURRENT_TIMESTAMP`).notNull(),
 },
     (table) => ({
         user_fk: foreignKey({
-            columns: [table.user_id],
+            columns: [table.user_id],   
             foreignColumns: [users.id],
         }),
     })
