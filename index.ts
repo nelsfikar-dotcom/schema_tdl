@@ -2,6 +2,8 @@ import express from 'express';
 import * as userAPI from './src/db/app/users/userAPI';
 import * as taskAPI from './src/db/app/tasks/taskAPI';
 import * as listTaskAPI from './src/db/app/tasks_list/listTaskAPI';
+import { loginUser } from './src/db/app/auth/loginAPI';
+import { registerUser } from './src/db/app/auth/regisAPI';
 
 const app = express();
 const port = 3000;
@@ -32,6 +34,9 @@ app.post('/task_list', listTaskAPI.createListTask);
 app.get('/task_list/:id', listTaskAPI.findListTaskById);
 app.put('/task_list/:id', listTaskAPI.updateListTask);
 app.delete('/task_list/:id', listTaskAPI.deleteListTask)
+
+app.post('/register', registerUser);
+app.post('/login',  loginUser);
 
 app.listen(port, () => {
     console.log('Server running at http://localhost:${port}');

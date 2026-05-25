@@ -9,10 +9,7 @@ export const loginUser = async (req: Request, res: Response) => {
         const { email, password } = req.body;
 
         // cari user berdasarkan email
-        const data = await db
-            .select()
-            .from(users)
-            .where(eq(users.email, email));
+        const data = await db.select().from(users).where(eq(users.email, email));
 
         // cek user ada atau tidak
         if (data.length === 0) {
