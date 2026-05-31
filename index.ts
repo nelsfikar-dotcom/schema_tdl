@@ -24,8 +24,9 @@ app.delete('/users/:id', userAPI.deleteUser);
 //TASK
 app.get('/tasks', taskAPI.getAlltask);
 app.post('/tasks', taskAPI.createTask);
+app.get('/tasks/user/:user_id', taskAPI.getTaskByUSerId);
 app.get('/tasks/:id', taskAPI.findTaskById);
-app.put('/task/:id', taskAPI.updateTask);
+app.put('/tasks/:id', taskAPI.updateTask);
 app.delete('/tasks/:id', taskAPI.deleteTask);
 
 //TASK_LIST

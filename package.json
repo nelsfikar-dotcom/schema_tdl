@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/node": "^25.9.1",
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.21.0"
   },

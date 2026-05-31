@@ -1,8 +1,7 @@
-import { tasks } from "../../schema"
+import { tasks, users } from "../../schema"
 import { Request, Response } from 'express';
 import db from "../.."
 import { eq } from "drizzle-orm";
-import { datetime } from "drizzle-orm/mysql-core";
 
 export const getAlltask = async (req: Request, res: Response) => {
     try {
@@ -22,6 +21,24 @@ export const getAlltask = async (req: Request, res: Response) => {
     }
 
 };
+
+export const getTaskByUSerId = async (req: Request, res: Response) => {
+    try {
+        const { user_id } = req.params
+        const data = await db.select().from(tasks).where(eq(tasks.user_id, Number(user_id)))
+        res.json({
+            succes: true,
+            message: "succes to find task user by user id" + user_id,
+            data: data
+        })
+    } catch (e) {
+        res.status(500).json({
+            succes: false,
+            message: "error : " + e,
+            data: []
+        })
+    }
+}
 
 export const createTask = async (req: Request, res: Response) => {
     try {
